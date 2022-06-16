@@ -21,6 +21,7 @@ export default function RepoList() {
         });
         setLanguage(buttonList);
         setData(response.data);
+        setFilteredData(response.data);
       });
   }, []);
   console.log('data: ', data);
@@ -37,10 +38,10 @@ export default function RepoList() {
 
   console.log('filtered data:: ', filteredData);
   return (
-    <div>
-      <h1>Silver Orange</h1>
-      <div>
-        <button type="button" onClick={() => showAll()}>
+    <div className="main">
+      <h1>Silver Orange Example</h1>
+      <div className="btn-group">
+        <button type="button" onClick={() => showAll()} className="btn">
           Show All
         </button>
         {language &&
@@ -49,22 +50,42 @@ export default function RepoList() {
               type="button"
               key={item.id}
               onClick={() => showSelection(item)}
+              className={`btn btn-${item}`}
             >
               {item}
             </button>
           ))}
       </div>
-      <>
+      <div className="card">
         {filteredData &&
           filteredData.map((item) => (
-            <Link to={`/${item.name}`} key={item.id} state={item}>
-              <p>{item.name}</p>
-              <p>{item.description}</p>
-              <p>{item.language}</p>
-              <p>{item.forks}</p>
+            <Link
+              to={`/${item.name}`}
+              key={item.id}
+              state={item}
+              className="link"
+            >
+              <div className="repo-name">
+                <span>Name </span>
+                <p>{item.name}</p>
+              </div>
+              {item.description ? (
+                <div className="repo-description">
+                  <span>Description </span>
+                  <p>{item.description}</p>
+                </div>
+              ) : null}
+              <div className="repo-language">
+                <span>Language </span>
+                <p>{item.language}</p>
+              </div>
+              <div className="repo-forks">
+                <span>Forks </span>
+                <p>{item.forks}</p>
+              </div>
             </Link>
           ))}
-      </>
+      </div>
     </div>
   );
 }

@@ -42,13 +42,28 @@ export default function CommitDetails() {
   }
 
   return (
-    <div>
-      <p>name: {commit.author.name}</p>
-      <p>date: {commit.author.date}</p>
-      <p>message: {commit.message}</p>
-      <button onClick={() => navigate('/')}>Back</button>
+    <div className="commit-details">
+      <h1>Latest Commit Details</h1>
+      <button onClick={() => navigate('/')} className="btn">
+        Back
+      </button>
+      <div>
+        <span>name</span>
+        <p>{commit.author.name}</p>
+      </div>
+      <div>
+        <span>date</span>
+        <p>{commit.author.date}</p>
+      </div>
+      <div>
+        <span>message</span>
+        <p>{commit.message}</p>
+      </div>
       <br />
-      <div>{readMe}</div>
+      <div>
+        <span>README.md</span>
+        <p>{readMe}</p>
+      </div>
     </div>
   );
 }
