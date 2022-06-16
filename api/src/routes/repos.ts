@@ -33,7 +33,7 @@ repos.get('/commit/:reponame', async (_: Request, res: Response) => {
   const reponame = _.params.reponame;
 
   await axios
-    .get(`https://api.github.com/repos/silverorange/${reponame}`, {
+    .get(`https://api.github.com/repos/silverorange/${reponame}/commits`, {
       headers: {
         'Content-Type': 'application/json',
       },
