@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function RepoList() {
   const [data, setData] = useState();
@@ -56,12 +57,12 @@ export default function RepoList() {
       <>
         {filteredData &&
           filteredData.map((item) => (
-            <div key={item.id}>
+            <Link to={`/${item.name}`} key={item.id} state={item}>
               <p>{item.name}</p>
               <p>{item.description}</p>
               <p>{item.language}</p>
               <p>{item.forks}</p>
-            </div>
+            </Link>
           ))}
       </>
     </div>
