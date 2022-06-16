@@ -23,6 +23,9 @@ export default function RepoList() {
         data.map((item) => (
           <div key={item.id}>
             <p>{item.name}</p>
+            <p>{item.description}</p>
+            <p>{item.language}</p>
+            <p>{item.forks}</p>
           </div>
         ))}
     </div>
