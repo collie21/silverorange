@@ -18,6 +18,8 @@ repos.get('/', async (_: Request, res: Response) => {
     .then((response: any) => {
       const repoData = response.data;
       const json = repoData.filter((item: any) => item.fork === false);
+      JSON.stringify(json);
+      console.log(JSON.stringify(json));
       res.send(json);
     })
     .catch((error:any) => {
