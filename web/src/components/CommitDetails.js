@@ -6,15 +6,11 @@ export default function CommitDetails() {
   const location = useLocation();
   const params = useParams();
   const navigate = useNavigate();
-  console.log('use location: ', location);
-  console.log('use params: ', params);
   const fullname = location.state.full_name;
-  console.log('fullname: ', fullname);
   const [commit, setCommit] = useState();
   const [readMe, setReadMe] = useState();
 
   useEffect(() => {
-    console.log(params.name);
     axios
       .get(`http://localhost:4000/repos/commit/${params.name}`, {
         headers: {
@@ -32,11 +28,10 @@ export default function CommitDetails() {
         },
       })
       .then((response) => {
-        console.log('readme get fetch: ', response.data);
         setReadMe(response.data);
       });
   }, [params, fullname]);
-  console.log('commit: ', commit);
+
   if (!commit) {
     return <p>error</p>;
   }

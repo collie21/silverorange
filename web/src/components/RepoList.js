@@ -24,19 +24,15 @@ export default function RepoList() {
         setFilteredData(response.data);
       });
   }, []);
-  console.log('data: ', data);
-  console.log('language: ', data);
 
   const showAll = () => {
     setFilteredData(data);
   };
   const showSelection = (item) => {
     const filt = data.filter((el) => el.language === item);
-    console.log('filt:: ', filt);
     setFilteredData(filt);
   };
 
-  console.log('filtered data:: ', filteredData);
   return (
     <div className="main">
       <h1>Silver Orange Example</h1>
